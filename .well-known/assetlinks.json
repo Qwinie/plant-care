@@ -3,6 +3,8 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.github.qwinie.twa",
-        "sha256_cert_fingerprints": ["C5:C3:79:5B:41:EE:B4:D1:79:3D:3D:4C:51:DB:BD:72:30:5C:8A:73:73:46:DE:EA:68:8E:EB:68:20:1C:50:18"]
+        "sha256_cert_fingerprints": [
+              "C5:C3:79:5B:41:EE:B4:D1:79:3D:3D:4C:51:DB:BD:72:30:5C:8A:73:73:46:DE:EA:68:8E:EB:68:20:1C:50:18",
+              "03:35:60:5B:A8:81:FA:3E:7B:7C:D6:BE:38:3F:AD:69:E0:1F:DB:22:09:D6:D6:0C:4E:31:1C:AC:D1:4A:1A:34" ]
       }
     }]

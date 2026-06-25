@@ -1,4 +1,0 @@
-# GitHub Pages config
-# Disable Jekyll processing - serve files as-is
-include:
-  - ".github"

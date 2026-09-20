@@ -1,8 +1,8 @@
 const {useState,useEffect,useCallback,useMemo,useRef}=React;
 
 // App version — bump this on every release so testers can verify their build
-const APP_VERSION = "5.4";
-const APP_BUILD = "1783106901";
+const APP_VERSION = "5.5";
+const APP_BUILD = "1789930280";
  function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } } function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }
 // ══════════════════════════════════════════════════════════════════
 // DESIGN TOKENS
@@ -7541,7 +7541,6 @@ const SettingsScreen = ({
 }) => {
   const [tab, setTab] = useState("general"); // "general" | "notif" | "data" | "sections"
   const [darkMode, setDarkMode] = useState(()=>JSON.parse(localStorage.getItem("plantcare_dark")||"false"));
-  const [showPrivacy, setShowPrivacy] = useState(false);
   const [aiPs, setAiPs] = useState(()=>{try{return JSON.parse(localStorage.getItem("plantcare_ai_provider")||"{}");}catch(_e){return {};}});
   const saveAiPs = (update) => { const next={...aiPs,...update}; setAiPs(next); localStorage.setItem("plantcare_ai_provider",JSON.stringify(next)); };
   const [notif, setNotif] = useState({...notifSettings});
@@ -8115,12 +8114,12 @@ const SettingsScreen = ({
               , React.createElement('div', { style: {fontWeight:700,color:C.soil,marginBottom:4,fontSize:14}}, (t.privacy||"🔒 Privacy"))
               , React.createElement('div', { style: {fontSize:13,color:C.muted,marginBottom:10,lineHeight:1.5}}, "Plant Care slaat alle data uitsluitend op je eigen apparaat op. Geen accounts, geen tracking.")
               , React.createElement('button', {
-                  onClick:()=>setShowPrivacy(p=>!p),
+                  onClick:()=>window.open("https://www.elloco.be/privacy-plantcareapp.html"),
                   style:{width:"100%",padding:"10px",border:`1px solid ${C.border}`,borderRadius:10,
                     background:"none",cursor:"pointer",fontFamily:"inherit",fontSize:13,
                     color:C.green,fontWeight:600}},
-                showPrivacy ? (t.privacyClose||"▲ Privacybeleid sluiten") : (t.privacyView||"📋 Privacybeleid bekijken"))
-              , showPrivacy && React.createElement('div', {
+                (t.privacyView||"📋 Privacybeleid bekijken"))
+              , false && React.createElement('div', {
                   style:{marginTop:12,maxHeight:400,overflowY:"auto",borderRadius:10,
                     border:`1px solid ${C.border}`,padding:16,background:C.surfaceAlt,
                     fontSize:13,lineHeight:1.8,color:C.text}},
@@ -8773,6 +8772,7 @@ function PlantCareApp() {
 
 
     ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(PlantCareApp));
+  
   
   
   

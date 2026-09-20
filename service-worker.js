@@ -1,4 +1,4 @@
-const CACHE_NAME = "plant-care-v1783107113";
+const CACHE_NAME = 'plant-care-v1789930290';
 const ASSETS = [
   "/plant-care/","/plant-care/index.html","/plant-care/react.js",
   "/plant-care/app.js","/plant-care/manifest.json",
